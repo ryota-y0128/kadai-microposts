@@ -14,7 +14,7 @@ class User < ApplicationRecord
     has_many :followers, through: :reverses_of_relationship, source: :user
     
     has_many :favorites
-    has_many :bookmarking, through: :favorites, source: :microposts
+    has_many :bookmarking, through: :favorites, source: :micropost
     
     
     def follow(other_user)
@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end 
   
   def registering?(post)
-    self.registering.include?(post)
+    self.bookmarking.include?(post)
   end 
 
 end 
